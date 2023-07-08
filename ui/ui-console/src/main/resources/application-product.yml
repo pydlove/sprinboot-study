@@ -1,0 +1,83 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  aop:
+    auto: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://119.3.3.18:3306/esc_product?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: aiocloud@0708
+    filters: stat,wall,log4j
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    minldle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictabledleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileldle: true
+    testOnBorrow: false
+    testOnReturn: false
+  redis:
+    host: 119.3.3.18
+    port: 6333
+    password: aiocloud@0708
+    #是否开启redis缓存 true开启 false关闭
+    open: true
+    #Redis数据库索引（默认为0）
+    database: 0
+    jedis:
+      pool:
+        #连接池最大连接数（使用0表示没有限制）
+        max-active: 500
+        #连接池最大阻塞等待时间（使用0表示没有限制）
+        max-wait: 3000
+        #连接池中的最大空闲连接
+        max-idle: 100
+        #连接池中的最小空闲连接
+        min-idle: 50
+        #控制一个pool可分配多少个jedis实例,用来替换上面的redis.maxActive,如果是jedis 2.4以后用该属性
+        maxTotal: 500
+    #连接超时时间（毫秒）
+    timeout: 5000
+    #在空闲时检查有效性, 默认false
+    testWhileIdle: true
+    #是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+    testOnBorrow: true
+  mvc:
+    static-path-pattern: /**
+    favicon: false
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    cache: true
+server:
+  port: 19096
+  servlet:
+    context-path: /console-service
+  address: 0.0.0.0
+  tomcat:
+    basedir: D:\1@CodeManager\aiocloud-temp
+mybatis:
+  mapper-locations: classpath:mapper-simple-group/*.xml
+  type-aliases-package: com.aiocloud.camp.dao.group.po
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+logging:
+  level:
+    com.aiocloud.camp.dao.group: debug

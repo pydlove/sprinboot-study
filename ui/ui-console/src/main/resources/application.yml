@@ -1,0 +1,10 @@
+spring:
+  profiles:
+#      active: product
+     active: dev
+  application:
+    name: console-service
+    version: 1.0.0
+  jackson:
+       date-format: yyyy-MM-dd HH:mm:ss
+       time-zone: GMT+8

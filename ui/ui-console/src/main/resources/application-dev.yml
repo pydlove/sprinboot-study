@@ -1,0 +1,59 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  aop:
+    auto: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/console?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    filters: stat,wall,log4j
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    minldle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictabledleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileldle: true
+    testOnBorrow: false
+    testOnReturn: false
+  mvc:
+    static-path-pattern: /**
+    favicon: false
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    cache: true
+server:
+  port: 19096
+  servlet:
+    context-path: /console-service
+  address: 0.0.0.0
+  tomcat:
+    basedir: D:\1@CodeManager\aiocloud-temp
+mybatis:
+  mapper-locations: classpath:mapper-simple-console/*.xml
+  type-aliases-package: com.jiliu.camp.console.dao
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+# 日志
+logging:
+  level:
+    com.jiliu.camp.console.dao: debug
+
